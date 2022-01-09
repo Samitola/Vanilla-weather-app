@@ -54,5 +54,5 @@ li {
 }
 
 li:first-letter {
-  text-transform: 0 capitalize;
+  text-transform: capitalize;
 }

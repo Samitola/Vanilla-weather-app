@@ -2,7 +2,7 @@ function formatDate(timestamp) {
   let date = new Date(timestamp);
   let hours = date.getHours();
   if (hours < 10) {
-    hours = `${minutes}`;
+    hours = `0${minutes}`;
   }
   let minutes = date.getMinutes();
   if (minutes < 10) {
@@ -29,15 +29,20 @@ function displayTemperature(response) {
   let maximumElement = document.querySelector("#maximum");
   let windElement = document.querySelector("#wind");
   let dateElement = document.querySelector("#date");
+  let feelsElement = document.querySelector("#feels");
+  let minimumElement = document.querySelector("#minimum");
 
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
   cityElement.innerHTML = response.data.name;
-  descriptionElement.innerHTML = response.data.weather[0].main;
+  descriptionElement.innerHTML = response.data.weather[0].description;
   maximumElement.innerHTML = Math.round(response.data.main.temp_max);
   windElement.innerHTML = Math.round(response.data.wind.speed);
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
+  feelsElement.innerHTML = Math.round(response.data.main.feels_like);
+  minimumElement.innerHTML = Math.round(response.data.main.temp_min);
 }
 
 let apiKey = "b1b7ee9d1c74d69e09f208444a66c295";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=New York&appid=${apiKey}&units=metric`;
+let city = "New York";
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 axios.get(apiUrl).then(displayTemperature);
