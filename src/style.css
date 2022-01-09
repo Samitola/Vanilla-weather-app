@@ -2,7 +2,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 .weather-app-wrapper {
-  max-width: 600px;
+  max-width: 500px;
   margin: 30px auto;
 }
 
@@ -47,6 +47,7 @@ li {
   color: cornflowerblue;
   margin: 0;
   padding: 0;
+  text-transform: capitalize;
   font-size: 16px;
   font-weight: 100;
   line-height: 19px;
